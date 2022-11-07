@@ -1,0 +1,54 @@
+--WILDCARDA
+SELECT *
+FROM client
+WHERE client_name LIKE '%LLC'
+
+-- find any branch supplier who are in the label bussiness
+SELECT * 
+FROM brach_supplier
+WHERE supplier_name LIKE '%Label%';
+
+-- fimd all employee born in October
+SELECT * 
+FROM employee
+WHERE birth_day LIKE '____-10%';
+
+-- find any client who are schools 
+SELECT * 
+FROM client
+WHERE client_name LIKE '%school';
+
+--- UNIONS 
+-- find  a list of employees and brach names 
+SELECT first_name
+FROM employee
+UNION   
+SELECT branch_name 
+FROM branch;
+
+--- find a list of all clients & branch suppliers names SELECT first_name
+SELECT client_name, branch_id
+FROM client
+UNION   
+SELECT supplier_name, branch_id 
+FROM branch_supplier;
+
+--- find a list of all money spent or earned by the company
+SELECT salary
+FROM employee
+UNION   
+SELECT total_sales 
+FROM works_with;
+
+
+--- JOINS 
+--- find all branch and the name of their managers
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch
+ON employee.emp_id=branch.mgr_id;
+
+ --- INNER JOINS COMBINE ROWS FROM TABLES 
+ --- LEFT JOINS INCLUDE ALL THE ROWS FROM THE LEFT TABLE (AFTER THE FROM STATEMENT)
+ --- RIGHT JOINS INCLUDE ALL THE ROWS FORM THE RIGHT TABLE 
+ --- OUTER FULL JOINS BOTH LEFT AND RIGHT TABLES ROWS

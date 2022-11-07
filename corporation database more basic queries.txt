@@ -1,0 +1,46 @@
+-- find all the employees
+SELECT * 
+FROM employee;
+-- find all the clients
+SELECT * 
+FROM client;
+--find all employees ordered by salary
+SELECT * 
+FROM employee
+ORDER by salary DESC;
+--find all employees ordered by sex and then by name
+SELECT * FROM employee
+ORDER BY sex, first_name, last_name;
+-- find the first 5 employee from the table
+SELECT * FROM employee 
+LIMIT 5;
+
+SELECT first_name AS forename, last_name AS surname
+FROM employee;
+
+SELECT DISTINCT sex
+FROM employee;
+
+--- MySQL FUNCTIONS 
+-- find the number of employees 
+SELECT COUNT(emp_id)
+FROM employee; 
+--find the number of females employees born after 1970
+SELECT COUNT(empd_id)
+FROM employee
+WHERE sex='F' AND birth_date > '1971-01-01';
+-- find the average of all employees salaries
+SELECT AVG(salary)
+FROM employee;
+-- find the sum of all employee salaries 
+SELECT SUM(salary)
+FROM employee;
+-- find how many males and females are in the company
+SELECT COUNT(sex), sex
+FROM employees
+GROUP BY sex;
+
+--- find the total sales of each salesman 
+SELECT SUM(total_sales), empd_id
+FROM works_with 
+GROUP BY empd_id;
